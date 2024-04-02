@@ -1,0 +1,4 @@
+name: isLobby
+version: '${project.version}'
+main: com.tofa.islobby.IsLobby
+api-version: '1.20'
