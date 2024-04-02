@@ -8,7 +8,6 @@ The IsLobby plugin is a tool for configuring the lobby server and runs on versio
 * Time synchronization: the ability to synchronize real time with time in minecraft
 * Configuration of interactions with objects and blocks: you can specify which blocks and objects you want to allow or prohibit in your lobby
 * Setting spawn point in a couple of clicks: thanks to the command, you can set a spawn point for players
-* 
 **Commands**
 
 * /setlobbyspawn (islobby.setlobbyspawn) - sets the spawn point
