@@ -1,5 +1,6 @@
 package com.tofa.islobby.scheduler;
 
+import com.tofa.islobby.config.ConfigLoader;
 import com.tofa.islobby.config.MiscConfiguration;
 import com.tofa.islobby.config.SpawnConfiguration.LocationConfiguration;
 import org.bukkit.World;
@@ -10,15 +11,17 @@ import java.util.TimeZone;
 
 public class TimeSynchronizationScheduler implements Runnable {
 
-    private final LocationConfiguration locationConfiguration;
-    private final MiscConfiguration miscConfiguration;
-    public TimeSynchronizationScheduler(LocationConfiguration locationConfiguration, MiscConfiguration miscConfiguration) {
-        this.locationConfiguration = locationConfiguration;
-        this.miscConfiguration = miscConfiguration;
+    private final ConfigLoader configLoader;
+
+    public TimeSynchronizationScheduler(ConfigLoader configLoader) {
+        this.configLoader = configLoader;
     }
 
     @Override
     public void run() {
+
+        LocationConfiguration locationConfiguration = configLoader.getSpawnConfiguration().getLocationConfiguration();
+        MiscConfiguration miscConfiguration = configLoader.getMiscConfiguration();
 
         World world = locationConfiguration.asLocation().getWorld();
         String timezone = miscConfiguration.getTimeSynchronizationConfiguration().getTimezone();

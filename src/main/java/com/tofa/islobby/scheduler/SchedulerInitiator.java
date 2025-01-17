@@ -26,8 +26,7 @@ public class SchedulerInitiator {
         if (miscConfiguration.getTimeSynchronizationConfiguration().isEnabled()) {
             spawnConfiguration.getLocationConfiguration().asLocation().getWorld().setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
             Bukkit.getScheduler().runTaskTimer(plugin, new TimeSynchronizationScheduler(
-                    spawnConfiguration.getLocationConfiguration(),
-                    miscConfiguration
+                    plugin.getConfigLoader()
             ), 10, 10);
         }
     }

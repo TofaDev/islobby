@@ -14,12 +14,12 @@ import java.nio.file.StandardCopyOption;
 
 public class ConfigLoader {
 
-    private final SpawnConfiguration spawnConfiguration;
-    private final InteractionConfiguration interactionConfiguration;
-    private final MiscConfiguration miscConfiguration;
-    private final EventsConfiguration eventsConfiguration;
+    private SpawnConfiguration spawnConfiguration;
+    private InteractionConfiguration interactionConfiguration;
+    private MiscConfiguration miscConfiguration;
+    private EventsConfiguration eventsConfiguration;
 
-    private final CommentedConfigurationNode rootNode;
+    private CommentedConfigurationNode rootNode;
     private final HoconConfigurationLoader loader;
 
 
@@ -31,15 +31,7 @@ public class ConfigLoader {
 
         loader = HoconConfigurationLoader.builder().path(configurationPath).defaultOptions(opts -> opts.serializers(build -> build.registerAll(LobbySerializers.getSerializers()))).build();
 
-        try {
-            rootNode = loader.load();
-            spawnConfiguration = rootNode.node("spawn").get(SpawnConfiguration.class);
-            interactionConfiguration = rootNode.node("interaction-filter").get(InteractionConfiguration.class);
-            miscConfiguration = rootNode.node("misc").get(MiscConfiguration.class);
-            eventsConfiguration = rootNode.node("events").get(EventsConfiguration.class);
-        } catch (ConfigurateException e) {
-            throw new RuntimeException(e);
-        }
+        reload();
     }
 
     private void createFileConfigurationIfNotExists(Path configurationPath) {
@@ -54,6 +46,18 @@ public class ConfigLoader {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    public void reload() {
+        try {
+            rootNode = loader.load();
+            spawnConfiguration = rootNode.node("spawn").get(SpawnConfiguration.class);
+            interactionConfiguration = rootNode.node("interaction-filter").get(InteractionConfiguration.class);
+            miscConfiguration = rootNode.node("misc").get(MiscConfiguration.class);
+            eventsConfiguration = rootNode.node("events").get(EventsConfiguration.class);
+        } catch (ConfigurateException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -80,9 +84,5 @@ public class ConfigLoader {
 
     public void save() throws ConfigurateException {
         loader.save(rootNode);
-    }
-
-    public HoconConfigurationLoader getLoader() {
-        return loader;
     }
 }

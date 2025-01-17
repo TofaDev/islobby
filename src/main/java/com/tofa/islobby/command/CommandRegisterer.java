@@ -19,6 +19,6 @@ public class CommandRegisterer {
                 .dependency(ConfigLoader.class, plugin.getConfigLoader())
                 .build();
 
-        lamp.register(new SetLobbySpawnCommand());
+        lamp.register(new SetLobbySpawnCommand(), new ReloadCommand());
     }
 }
