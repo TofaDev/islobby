@@ -1,6 +1,7 @@
 package com.tofa.islobby.listener;
 
 import com.tofa.islobby.IsLobby;
+import com.tofa.islobby.config.ConfigLoader;
 import com.tofa.islobby.config.InteractionConfiguration;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -11,14 +12,16 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class PlayerInteractListener implements Listener {
 
-    InteractionConfiguration interactionConfiguration;
+    ConfigLoader configLoader;
 
     public PlayerInteractListener(IsLobby plugin) {
-        interactionConfiguration = plugin.getConfigLoader().getInteractionConfiguration();
+        configLoader = plugin.getConfigLoader();
     }
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e) {
+
+        InteractionConfiguration interactionConfiguration = configLoader.getInteractionConfiguration();
 
         Player p = e.getPlayer();
 
