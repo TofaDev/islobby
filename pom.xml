@@ -123,15 +123,21 @@
       </dependency>
 
       <dependency>
-          <groupId>com.github.Revxrsal.Lamp</groupId>
-          <artifactId>common</artifactId>
-          <version>3.2.0</version>
+          <groupId>io.github.revxrsal</groupId>
+          <artifactId>lamp.common</artifactId>
+          <version>4.0.0-rc.4</version>
       </dependency>
 
       <dependency>
-          <groupId>com.github.Revxrsal.Lamp</groupId>
-          <artifactId>bukkit</artifactId>
-          <version>3.2.0</version>
+          <groupId>io.github.revxrsal</groupId>
+          <artifactId>lamp.bukkit</artifactId>
+          <version>4.0.0-rc.4</version>
+      </dependency>
+
+      <dependency>
+          <groupId>io.github.revxrsal</groupId>
+          <artifactId>lamp.brigadier</artifactId>
+          <version>4.0.0-rc.4</version>
       </dependency>
 
       <dependency>
