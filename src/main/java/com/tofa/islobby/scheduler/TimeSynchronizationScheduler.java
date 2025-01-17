@@ -2,8 +2,11 @@ package com.tofa.islobby.scheduler;
 
 import com.tofa.islobby.config.MiscConfiguration;
 import com.tofa.islobby.config.SpawnConfiguration.LocationConfiguration;
-import com.tofa.islobby.util.MinecraftTime;
 import org.bukkit.World;
+
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class TimeSynchronizationScheduler implements Runnable {
 
@@ -16,8 +19,11 @@ public class TimeSynchronizationScheduler implements Runnable {
 
     @Override
     public void run() {
+
         World world = locationConfiguration.asLocation().getWorld();
         String timezone = miscConfiguration.getTimeSynchronizationConfiguration().getTimezone();
-        world.setTime(MinecraftTime.getCurrentTimeInMinecraftTime(timezone));
+        TimeZone timeZone = TimeZone.getTimeZone(ZoneId.of(timezone));
+        Calendar calendar = Calendar.getInstance(timeZone);
+        world.setTime((1000L * calendar.get(Calendar.HOUR_OF_DAY)) + (16 * (calendar.get(Calendar.MINUTE) + 1)) - 6000);
     }
 }
