@@ -1,4 +1,5 @@
 # **IsLobby [1.13-1.20.4]**
+# IsLobby [1.19 - 1.21.4] 
 
 The IsLobby plugin is a tool for configuring the lobby server and runs on versions 1.20 - 1.20.4. It provides various functions and features for creating and configuring lobbies on the Minecraft server.
 
