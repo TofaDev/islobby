@@ -42,9 +42,10 @@ A simple and convenient plugin for configuring a lobby server in Minecraft.
 
 ## Commands
 
-| Command             | Description                           | Permission              |
-|---------------------|---------------------------------------|-------------------------|
-| `/setlobbyspawn`    | Sets the lobby spawn point            | `islobby.setlobbyspawn` |
+| Command           | Description                | Permission              |
+|-------------------|----------------------------|-------------------------|
+| `/setlobbyspawn`  | Sets the lobby spawn point | `islobby.setlobbyspawn` |
+| `/islobby reload` | reloads plugin config      | `islobby.reload`        |
 
 > **Example:**
 > ```
