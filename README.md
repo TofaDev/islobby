@@ -56,7 +56,7 @@ A simple and convenient plugin for configuring a lobby server in Minecraft.
 
 ## Example Configuration (config.conf)
 
-```json
+```hocon
 interaction-filter: {
   // list here all the blocks that you want to select for interaction.
   // use * to use a group of blocks of different types at once.
